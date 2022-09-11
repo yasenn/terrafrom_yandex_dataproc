@@ -17,10 +17,10 @@ provider "yandex" {
 
 # https://cloud.yandex.ru/docs/data-proc/operations/cluster-create
 resource "yandex_dataproc_cluster" "default" {
-  bucket              = "default"
+  bucket              = "dataproc-bucket-test"
   name                = var.project_name
   description         = var.project_name
-  service_account_id  = yandex_iam_service_account.dataproc.id
+  service_account_id  = yandex_iam_service_account.dataproc-test.id
   zone_id             = var.yc_zone
   # security_group_ids  = beta
   deletion_protection = false
@@ -44,7 +44,7 @@ resource "yandex_dataproc_cluster" "default" {
 #        disk_type_id       = "network-ssd"
         disk_size          = 64
       }
-      subnet_id   = yandex_vpc_network.default.id
+      subnet_id   = yandex_vpc_subnet.default.id
       hosts_count = 1
     }
 
@@ -56,7 +56,7 @@ resource "yandex_dataproc_cluster" "default" {
 #        disk_type_id       = "network-ssd"
         disk_size          = 64
       }
-      subnet_id   = yandex_vpc_network.default.id
+      subnet_id   = yandex_vpc_subnet.default.id
       hosts_count = 1
     }
 
@@ -68,7 +68,7 @@ resource "yandex_dataproc_cluster" "default" {
 #        disk_type_id       = "network-ssd"
         disk_size          = 64
       }
-      subnet_id   = yandex_vpc_network.default.id
+      subnet_id   = yandex_vpc_subnet.default.id
       hosts_count = 1
    }
   }
