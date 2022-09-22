@@ -17,10 +17,10 @@ provider "yandex" {
 
 # https://cloud.yandex.ru/docs/data-proc/operations/cluster-create
 resource "yandex_dataproc_cluster" "default" {
-  bucket              = "dataproc-bucket-test"
+  bucket              = "dataproc-bucket"
   name                = var.project_name
   description         = var.project_name
-  service_account_id  = yandex_iam_service_account.dataproc-test.id
+  service_account_id  = yandex_iam_service_account.dataproc.id
   zone_id             = var.yc_zone
   # security_group_ids  = beta
   deletion_protection = false
